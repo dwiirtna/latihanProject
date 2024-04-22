@@ -1,0 +1,25 @@
+{
+  "name": "project-vue",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5175",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 5175"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "axios": "^1.6.7",
+    "bootstrap": "^5.3.3",
+    "sweetalert2": "^11.10.6",
+    "vee-validate": "^4.12.6",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5",
+    "vue-sweetalert2": "^5.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.3",
+    "vite": "^5.0.11"
+  }
+}

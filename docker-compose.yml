@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  rest-api:
+    container_name: "rest-api"
+    restart : always
+    #depends_on:
+      #- postgre
+    environment:
+      - ENVIRONMET=development
+    build: 
+      context: ./www/project-lumen
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./www/project-lumen:/app
+      #- ./config/nginx/nginx-conf:/etc/nginx.conf
+    command: php -S 0.0.0.0:8000 -t public
+    #command: "sh /run/run.sh;"
+# Database PostgreSQL
+  postgres-db: 
+    image: postgres:latest
+    container_name: "postgrex"
+    restart : always
+    ports:
+      - "5437:5432"
+    environment:
+      #POSTGRES_DB=database
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      # - postgres-data:/var/lib/posgresql/data
+      - ./db/postgresql/data:/var/lib/postgresql/data
+
+    #tty: true
+    #networks:
+    #  martha-bridge:
+    #    aliases:
+    #    - rest-api
+    #    ipv4_address: 172.10.2.11
+networks:
+  app-network:
+    driver: bridge
